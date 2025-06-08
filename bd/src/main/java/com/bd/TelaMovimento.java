@@ -135,12 +135,12 @@ public class TelaMovimento extends JFrame {
 
         if (opcao == JOptionPane.OK_OPTION) {
             try {
-                
+
                 String idProdutoTexto = campoIdProduto.getText();
                 String precoTexto = campoPreco.getText();
                 String quantidadeTexto = campoQuantidade.getText();
                 boolean eEntrada = checkEEntrada.isSelected();
-                
+
                 if (precoTexto.isEmpty() || quantidadeTexto.isEmpty() || idProdutoTexto.isEmpty()) {
                     JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos.");
                     return;
@@ -150,7 +150,7 @@ public class TelaMovimento extends JFrame {
                 double preco = Double.parseDouble(precoTexto);
                 int quantidade = Integer.parseInt(quantidadeTexto);
 
-                Movimento novoMovimento = new Movimento(idProduto , preco, quantidade, eEntrada);
+                Movimento novoMovimento = new Movimento(idProduto, preco, quantidade, eEntrada);
                 if (dao.adicionarMovimento(novoMovimento)) {
                     JOptionPane.showMessageDialog(this, "Movimento adicionado com sucesso.");
                     atualizarTabelaMovimento();
@@ -158,9 +158,40 @@ public class TelaMovimento extends JFrame {
                     JOptionPane.showMessageDialog(this, "Erro ao adicionar movimento.");
                 }
 
+                try {
+                    idProduto = Integer.parseInt(campoIdProduto.getText());
+                    quantidade = Integer.parseInt(campoQuantidade.getText());
+                    eEntrada = checkEEntrada.isSelected();
+                    ProdutoDAO produtoDAO = new ProdutoDAO();
+
+                    Produto produto = produtoDAO.buscarProdutoPorId(idProduto);
+                    if (produto == null) {
+                        JOptionPane.showMessageDialog(this, "Produto com ID " + idProduto + " não encontrado.");
+                        return;
+                    }
+
+                    aplicarMovimento(produto, quantidade, eEntrada);
+                    JOptionPane.showMessageDialog(this, "Movimento aplicado com sucesso.");
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "ID e Quantidade devem ser números.");
+                }
+                ;
+
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Erro ao adicionar/editar produto."); // Duvida se essa bomba ta certa.
+                JOptionPane.showMessageDialog(this, "Erro ao adicionar/editar produto.");
             }
         }
     }
+
+    private void aplicarMovimento(Produto produto, int quantidade, boolean eEntrada) {
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        if (eEntrada) {
+            produto.setEntrada(quantidade);
+        } else {
+            produto.setSaida(quantidade);
+        }
+
+        produtoDAO.editarProduto(produto);
+    }
+
 }

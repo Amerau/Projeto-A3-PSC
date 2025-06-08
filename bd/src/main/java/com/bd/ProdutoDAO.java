@@ -94,5 +94,27 @@ public class ProdutoDAO {
         }
         return produtos; 
     }
+
+    public Produto buscarProdutoPorId(int id) {
+    String sql = "SELECT * FROM Produto WHERE idProduto = ?";
+    try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, id);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return new Produto(
+                rs.getInt("idProduto"),
+                rs.getString("nomeProduto"),
+                rs.getString("preco")
+            );
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return null;
+}
+
+
+
+
     
 }
