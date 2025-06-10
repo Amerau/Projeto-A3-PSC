@@ -158,7 +158,7 @@ public class TelaMovimento extends JFrame {
                     JOptionPane.showMessageDialog(this, "Erro ao adicionar movimento.");
                 }
 
-                try {
+                 try {
                     idProduto = Integer.parseInt(campoIdProduto.getText());
                     quantidade = Integer.parseInt(campoQuantidade.getText());
                     eEntrada = checkEEntrada.isSelected();
@@ -170,12 +170,12 @@ public class TelaMovimento extends JFrame {
                         return;
                     }
 
-                    aplicarMovimento(produto, quantidade, eEntrada);
+                     aplicarMovimento(produto, quantidade, eEntrada, preco);
                     JOptionPane.showMessageDialog(this, "Movimento aplicado com sucesso.");
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(this, "ID e Quantidade devem ser números.");
                 }
-                ;
+                ; 
 
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Erro ao adicionar/editar produto.");
@@ -183,15 +183,17 @@ public class TelaMovimento extends JFrame {
         }
     }
 
-    private void aplicarMovimento(Produto produto, int quantidade, boolean eEntrada) {
+     private void aplicarMovimento(Produto produto, int quantidade, boolean eEntrada, double preco) {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         if (eEntrada) {
-            produto.setEntrada(quantidade);
+            produto.setSaldo(produto.getSaldo() + quantidade);
+            produto.setPreco(String.valueOf(preco));
         } else {
-            produto.setSaida(quantidade);
+            produto.setSaldo(produto.getSaldo() - quantidade);
+            produto.setPreco(String.valueOf(preco));
         }
 
         produtoDAO.editarProduto(produto);
-    }
-
+    } 
+   
 }

@@ -34,7 +34,7 @@ public class TelaLogin extends JFrame {
         add(campoEmail);
         add(labelSenha);
         add(campoSenha);
-        add(new JLabel()); // espaço vazio
+        add(new JLabel());
         add(botaoLogin);
         add(botaoCadastro);
 
@@ -56,11 +56,9 @@ public class TelaLogin extends JFrame {
 
                 if (dao.autenticar(usuario)) {
                     JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
-
                     dispose();
-                    
                     new TelaProduto();
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Email ou senha inválidos.");
                 }

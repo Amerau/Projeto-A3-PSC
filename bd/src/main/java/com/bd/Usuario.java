@@ -24,6 +24,7 @@ public class Usuario {
         this.email = email;
         this.cpf = cpf;
         this.senha = senha;
+        this.adm = false;
     }
 
     public Usuario(String email, String senha) {

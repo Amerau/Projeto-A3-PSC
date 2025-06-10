@@ -5,26 +5,12 @@ public class Produto {
     private String nomeProduto;
     private int idProduto;
     private String preco;
-    private int entrada;
-    private int saida;
     private int saldo;
 
-    public Produto(int idProduto, String nomeProduto, String preco, int entrada, int saida, int saldo) {
-
-        this.nomeProduto = nomeProduto;
-        this.idProduto = idProduto;
-        this.preco = preco;
-        this.entrada = entrada;
-        this.saida = saida;
-        this.saldo = saldo;
-    }
-
-    public Produto(String nomeProduto, String preco, int entrada, int saida, int saldo) {
+    public Produto(String nomeProduto, String preco, int saldo) {
 
         this.nomeProduto = nomeProduto;
         this.preco = preco;
-        this.entrada = entrada;
-        this.saida = saida;
         this.saldo = saldo;
     }
 
@@ -50,22 +36,8 @@ public class Produto {
         this.preco = preco;
     }
 
-    public int getEntrada() {
-        return entrada;
-    }
-
-    public void setEntrada(int entrada) {
-        this.entrada = this.entrada + entrada;
-        this.saldo = this.saldo + entrada;
-    }
-
-    public int getSaida() {
-        return saida;
-    }
-
-    public void setSaida(int saida) {
-        this.saida = this.saida + saida;
-        this.saldo = this.saldo - saida;
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
     }
 
     public String getNomeProduto() {
