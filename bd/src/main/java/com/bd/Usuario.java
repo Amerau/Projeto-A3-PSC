@@ -27,11 +27,11 @@ public class Usuario {
         this.adm = false;
     }
 
-    public Usuario(String email, String senha) {
+    public Usuario(String email, String senha, boolean adm) {
 
         this.email = email;
         this.senha = senha;
-        this.adm = false;
+        this.adm = adm;
     }
 
     public int getIdUsuario() {

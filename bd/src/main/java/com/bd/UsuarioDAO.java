@@ -7,7 +7,7 @@ import java.util.List;
 public class UsuarioDAO {
 
     public boolean autenticar(Usuario usuario) {
-        String sql = "SELECT * FROM Usuario WHERE email = ? AND senha = ? AND adm = ?";
+        String sql = "SELECT * FROM Usuario WHERE email = ? AND senha = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -17,6 +17,9 @@ public class UsuarioDAO {
             stmt.setBoolean(3, usuario.isAdm());
 
             ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                usuario.setAdm(rs.getBoolean("adm"));
+            }
 
             return rs.next();
         } catch (SQLException e) {
