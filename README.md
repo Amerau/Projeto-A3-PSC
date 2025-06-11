@@ -67,13 +67,13 @@ ProgramaAcai/
 ✅ Projeto finalizado – desenvolvido como parte de um projeto acadêmico.
 
 👤 Autor
-Nome: Édipo Alexandre Santos       RA: 821133511
-      Gabriel Xavier Antunes       RA: 822162740
-      Guilherme Amaral da Silva    RA: 822143269
-      Guilherme Previati Oliveira  RA: 822151077
-      João Pedro de Carvalho Gomes RA: 82210896
-      Matheus Saporito Nastari     RA: 822158544
-      Rafael de Oliveira           RA: 821236353
+Nome: Édipo Alexandre Santos       RA: 821133511  
+      Gabriel Xavier Antunes       RA: 822162740  
+      Guilherme Amaral da Silva    RA: 822143269  
+      Guilherme Previati Oliveira  RA: 822151077  
+      João Pedro de Carvalho Gomes RA: 82210896  
+      Matheus Saporito Nastari     RA: 822158544  
+      Rafael de Oliveira           RA: 821236353  
 
 Curso: Engenharia da Computação
 Unidade Curricular: Programação de Soluções Computacionais
