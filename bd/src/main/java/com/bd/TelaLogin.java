@@ -48,9 +48,6 @@ public class TelaLogin extends JFrame {
 
         add(painelPrincipal);
 
-       
-    
-
         botaoCadastro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,12 +64,12 @@ public class TelaLogin extends JFrame {
 
                 Usuario usuario = new Usuario(email, senha, adm);
 
-                if (usuario.getEmail().equals("admin") && usuario.getSenha().equals("admin")
-                        && usuario.isAdm() == true) {
-
+                if (usuario.getEmail().equals("admin") && usuario.getSenha().equals("admin") && usuario.isAdm() == true) {
+                    dispose();
                     new TelaProduto();
 
                 } else {
+                    dispose();
                     new TelaProdutoUsuario();
                 }
 
